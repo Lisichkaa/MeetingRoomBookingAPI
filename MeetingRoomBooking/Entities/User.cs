@@ -15,10 +15,10 @@ namespace MeetingRoomBooking.Entities
 
         public bool Admin { get; set; } = false;
 
-        [Required]
-        public string Email { get; set; }
+        /*[Required(AllowEmptyStrings = true)]
+        public string? Email { get; set; }
 
-        [Required]
-        public string PhoneNumber { get; set; }
+        [Required(AllowEmptyStrings = true)]
+        public string? PhoneNumber { get; set; }*/
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace MeetingRoomBooking.Controllers
 {
     [ApiController]
-    [Route("api/meetingRoomBooking/User")]
+    [Route("api/meetingRoomBooking")]
     public class MeetingRoomBookingUserController : ControllerBase
     {
         private readonly MeetingRoomBookingContext _context;
@@ -16,7 +16,7 @@ namespace MeetingRoomBooking.Controllers
             _context = context;
         }
 
-        [HttpGet(Name = "GetUsers")]
+        [HttpGet("GetUsers")]
         public async Task<ActionResult<List<User>>> GetUsers()
         {
             var users = await _context.Users.ToListAsync();
@@ -26,7 +26,7 @@ namespace MeetingRoomBooking.Controllers
 
         // POST api/MeetingRoomUser/CreateUser
         [HttpPost("CreateUser")]
-        public async Task<ActionResult<User>> CreateUser(long telegramId, string login, string email = null, string phoneNumber = null)
+        public async Task<ActionResult<User>> CreateUser(long telegramId, string login)
         {
             var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.TelegramId == telegramId);
             if (existingUser != null)
@@ -40,14 +40,14 @@ namespace MeetingRoomBooking.Controllers
                 Login = login
             };
 
-            if (email != null)
+            /*if (email != null)
             {
                 newUser.Email = email;
             }
             if (phoneNumber != null)
             {
                 newUser.PhoneNumber = phoneNumber;
-            }
+            }*/
 
             _context.Users.Add(newUser);
             await _context.SaveChangesAsync();

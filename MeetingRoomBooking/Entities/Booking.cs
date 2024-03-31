@@ -13,11 +13,11 @@ namespace MeetingRoomBooking.Entities
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public DateTime Data { get; set; }
+        public string Data { get; set; } 
 
-        public DateTime StartTime { get; set; }
+        public string StartTime { get; set; }
 
-        public DateTime EndTime { get; set; }
+        public string EndTime { get; set; }
 
         [ForeignKey("MeetingRoom")]
         public int MeetingRoomId { get; set; }

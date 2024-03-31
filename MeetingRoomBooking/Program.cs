@@ -25,7 +25,6 @@ namespace MeetingRoomBooking
 
             var app = builder.Build();
 
-            
             app.UseCors(policy => policy
                 .AllowAnyOrigin()
                 .AllowAnyHeader()

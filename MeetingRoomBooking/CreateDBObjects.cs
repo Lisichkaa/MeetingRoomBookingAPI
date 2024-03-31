@@ -26,8 +26,8 @@ namespace MeetingRoomBooking
                 {
                     TelegramId = random.Next(1000000, 9999999), // Генерация случайного TelegramId
                     Login = $"user{i + 1}", // Генерация логина вида "user1", "user2", и т.д.
-                    Email = $"user{i + 1}@example.com", // Генерация адреса электронной почты
-                    PhoneNumber = "+1234567890", // Пример номера телефона
+                    //Email = $"user{i + 1}@example.com", // Генерация адреса электронной почты
+                    //PhoneNumber = "+1234567890", // Пример номера телефона
                 };
 
                 if (i == 0)
@@ -76,9 +76,9 @@ namespace MeetingRoomBooking
                 var newBooking = new Booking
                 {
                     UserId = newUser.Id, // Выбираем случайного пользователя из списка
-                    Data = DateTime.Now.Date.AddDays(random.Next(1, 10)), // Генерация случайной даты в ближайшие 10 дней
-                    StartTime = DateTime.Now.Date.AddHours(random.Next(8, 16)), // Генерация случайного времени начала бронирования
-                    EndTime = DateTime.Now.Date.AddHours(random.Next(16, 23)), // Генерация случайного времени окончания бронирования
+                    Data = DateTime.Now.Date.AddDays(random.Next(1, 10)).ToString("dd.MM.yyyy"), // Генерация случайной даты в ближайшие 10 дней
+                    StartTime = DateTime.Now.Date.AddHours(random.Next(8, 16)).ToString("HH:mm"), // Генерация случайного времени начала бронирования
+                    EndTime = DateTime.Now.Date.AddHours(random.Next(16, 23)).ToString("HH:mm"), // Генерация случайного времени окончания бронирования
                     MeetingRoomId = newMeetingRoom.Id, // Выбираем случайную комнату из списка
                     MeetingRoom = newMeetingRoom,
                     Description = $"Booking {i + 1}" // Генерация описания

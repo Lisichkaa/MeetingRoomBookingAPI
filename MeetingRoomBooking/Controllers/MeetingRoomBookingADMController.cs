@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace MeetingRoomBooking.Controllers
 {
     [ApiController]
-    [Route("api/meetingRoomBooking/ADM")]
+    [Route("api/meetingRoomBooking")]
     public class MeetingRoomBookingADMController : ControllerBase
     {
         private readonly MeetingRoomBookingContext _context;
@@ -20,7 +20,13 @@ namespace MeetingRoomBooking.Controllers
         [HttpGet("GetReports")]
         public async Task<ActionResult<List<Report>>> GetReports()
         {
-            var reports = await _context.Reports.ToListAsync();
+            var reports = await _context.Reports
+                .Include(b => b.SenderUser)
+                .Include(b => b.RecipientUser)
+                .Include(b => b.ReportType)
+                .Include(b => b.Booking)
+                .ToListAsync();
+
             return reports;
             //return Ok(reports);
         }

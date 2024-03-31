@@ -28,6 +28,5 @@ namespace MeetingRoomBooking.Entities
 
         public string Description { get; set; }
 
-
     }
 }
